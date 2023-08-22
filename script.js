@@ -23,9 +23,9 @@ function addToList(){
     doneListItem.textContent = "Done";
     listItem.appendChild(doneListItem);
     doneListItem.addEventListener("click", (e) => {
+        list.removeChild(e.target.parentElement); 
         doneList.appendChild(e.target.parentElement);
-        console.log(e.target.parentElement);
-        e.target.parentElement.remove();
+        e.target.remove();
     })
 }
 
