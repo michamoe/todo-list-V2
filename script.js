@@ -1,25 +1,31 @@
 const todolist = document.querySelector("#todoList");
 const todoText = document.querySelector("#todoText");
 const list = document.querySelector("#list");
+const doneList = document.querySelector("#donelist");
 
 todolist.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log(e)
     addToList();
 });
 
 function addToList(){
-    console.log("test", todoText.value)
     let listItem = document.createElement("li");
     listItem.textContent = todoText.value;
     list.appendChild(listItem);
     todoText.value = "";
-    let listDelete = document.createElement("button");
-    listDelete.textContent = "Delete";
-    listItem.appendChild(listDelete);
-    listDelete.addEventListener("click", (e) => {
-        console.log("Hallo",e);
-        e.preventDefault();
+    let deleteListItem = document.createElement("button");
+    deleteListItem.textContent = "Delete";
+    listItem.appendChild(deleteListItem);
+    deleteListItem.addEventListener("click", (e) => {
+        e.target.parentElement.remove();
+    })
+    let doneListItem = document.createElement("button");
+    doneListItem.textContent = "Done";
+    listItem.appendChild(doneListItem);
+    doneListItem.addEventListener("click", (e) => {
+        doneList.appendChild(e.target.parentElement);
+        console.log(e.target.parentElement);
+        e.target.parentElement.remove();
     })
 }
 
