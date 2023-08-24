@@ -26,8 +26,12 @@ function addToList(){
         //e.target.parentElement.innerHTML += "Hallo"; //div
         let currentLi = e.target.parentElement.parentElement;
         let buttonDiv = currentLi.removeChild(e.target.parentElement);
-        currentLi.innerHTML += "Hallo"; // edit-Fenster todo;
+        let editInput = document.createElement("input");
+        editInput.setAttribute("type", "text");
+        editInput.value = currentLi.innerText;
+        currentLi.appendChild(editInput);
         currentLi.appendChild(buttonDiv);
+
     });
     deleteListItem.addEventListener("click", (e) => {
         e.target.parentElement.parentElement.remove();
